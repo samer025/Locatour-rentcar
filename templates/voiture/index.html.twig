@@ -1,0 +1,46 @@
+{% extends 'frontt.html.twig' %}
+
+{% block title %}Voiture index{% endblock %}
+
+{% block body %}
+    <h1>Voiture index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id_v</th> #}
+                <th>Matricule</th>
+                <th>Marque</th>
+                <th>Modele</th>
+                <th>Klm</th>
+                <th>Annee</th>
+                <th>Prix</th>
+                <th>Reserver</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voiture in voitures %}
+            <tr>
+               {#  <td>{{ voiture.id_v }}</td> #}
+                <td>{{ voiture.matricule }}</td>
+                <td>{{ voiture.marque }}</td>
+                <td>{{ voiture.modele }}</td>
+                <td>{{ voiture.klm }}</td>
+                <td>{{ voiture.annee ? voiture.annee|date('Y-m-d') : '' }}</td>
+                <td>{{ voiture.prix }}</td>
+                <td>
+                   {#  <a href="{{ path('app_voiture_show', {'id_v': voiture.id_v}) }}">show</a>
+                    <a href="{{ path('app_voiture_edit', {'id_v': voiture.id_v}) }}">edit</a> #}
+                    <a href="{{ path('app_reservation_new') }}">reserver</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_voiture_new') }}">Create new</a> #}
+{% endblock %}

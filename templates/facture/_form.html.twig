@@ -1,0 +1,42 @@
+<div class="container">
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+
+    <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.reservation, "Reservation")  }}
+    {{ form_widget(form.reservation,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.reservation) is not empty %}
+    <div class="alert alert-danger"
+    {{ form_errors(form.reservation) }}
+    </div>
+    {% endif %}
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.id_c, "client")  }}
+    {{ form_widget(form.id_c,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.id_c) is not empty %}
+    <div class="alert alert-danger"
+    {{ form_errors(form.id_c) }}
+    </div>
+    {% endif %}
+    </div>
+
+   
+
+
+
+
+
+ <button class="btn btn-primary submit-btn"> 
+     {{ button_label|default('Save') }}
+    </button>
+
+
+
+ {{ form_end(form) }}
+</div>

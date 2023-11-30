@@ -1,0 +1,67 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Voiture index{% endblock %}
+
+{% block body %}
+    <h1>Voiture index</h1>
+
+    <input type="text" class="form-control" id="searchInput" placeholder="Search&hellip;">
+
+<br>
+<script>
+        function filterTable() {
+            const filter = document.getElementById('searchInput').value.toUpperCase();
+            const rows = document.querySelectorAll('table tr');
+            for (let i = 1; i < rows.length; i++) {
+                const cols = rows[i].querySelectorAll('td');
+                let visible = false;
+                for (let j = 0; j < cols.length; j++) {
+                    const cell = cols[j];
+                    if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+                        visible = true;
+                        break;
+                    }
+                }
+                rows[i].style.display = visible ? '' : 'none';
+            }
+        }
+        document.getElementById('searchInput').addEventListener('keyup', filterTable);
+    </script>
+    <table class="table" border="2">
+    <thead>
+            <tr>
+                <th>Id_v</th>
+                <th>Matricule</th>
+                <th>Marque</th>
+                <th>Modele</th>
+                <th>Klm</th>
+                <th>Annee</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voiture in voitures %}
+            <tr>
+                <td>{{ voiture.id_v }}</td>
+                <td>{{ voiture.matricule }}</td>
+                <td>{{ voiture.marque }}</td>
+                <td>{{ voiture.modele }}</td>
+                <td>{{ voiture.klm }}</td>
+                <td>{{ voiture.annee ? voiture.annee|date('Y-m-d') : '' }}</td>
+                <td>{{ voiture.prix }}</td>
+                <td>
+                   <a href="{{ path('app_voiture_show', {'id_v': voiture.id_v}) }}">show</a>
+                   <a href="{{ path('app_voiture_edit', {'id_v': voiture.id_v}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   {#} <a href="{{ path('app_voiture_new') }}">Create new</a>{#}
+{% endblock %}

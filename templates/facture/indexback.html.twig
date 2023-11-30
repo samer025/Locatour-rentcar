@@ -1,0 +1,56 @@
+{% extends 'back.html.twig' %}
+
+
+{% block title %}Facture index{% endblock %}
+{% block body %}
+    <h1>Facture index</h1>
+  <input type="text" class="form-control" id="searchInput" placeholder="Search&hellip;">
+
+<br>
+<script>
+        function filterTable() {
+            const filter = document.getElementById('searchInput').value.toUpperCase();
+            const rows = document.querySelectorAll('table tr');
+            for (let i = 1; i < rows.length; i++) {
+                const cols = rows[i].querySelectorAll('td');
+                let visible = false;
+                for (let j = 0; j < cols.length; j++) {
+                    const cell = cols[j];
+                    if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+                        visible = true;
+                        break;
+                    }
+                }
+                rows[i].style.display = visible ? '' : 'none';
+            }
+        }
+        document.getElementById('searchInput').addEventListener('keyup', filterTable);
+    </script>
+    <table class="table" border="2">
+        <thead>
+            <tr>
+                <th>Id_f</th>
+                
+               {#} <th>actions</th> #}
+            </tr>
+        </thead>
+        <tbody>
+        {% for facture in factures %}
+            <tr>
+                <td>{{ facture.id_f }}</td>
+                
+               
+                   {#} <a href="{{ path('app_facture_show', {'id_f': facture.id_f}) }}">show</a> #}
+                   {# <a href="{{ path('app_facture_edit', {'id_f': facture.id_f}) }}">edit</a>#}
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   {#} <a href="{{ path('app_facture_new') }}">Create new</a>#}
+{% endblock %}

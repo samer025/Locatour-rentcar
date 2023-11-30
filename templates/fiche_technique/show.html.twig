@@ -1,0 +1,42 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}FicheTechnique{% endblock %}
+
+{% block body %}
+<center>
+    <h1>FicheTechnique</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fiche_technique.id }}</td>
+            </tr>
+            
+           
+            <tr>
+                <th>Tax</th>
+                <td>{{ fiche_technique.tax ? fiche_technique.tax|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Assurence</th>
+                <td>{{ fiche_technique.assurence ? fiche_technique.assurence|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Visite_tech</th>
+                <td>{{ fiche_technique.visiteTech ? fiche_technique.visiteTech|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Vidange</th>
+                <td>{{ fiche_technique.vidange }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+     {#<a href="{{ path('app_fiche_technique_index') }}">back to list</a>#}
+
+    <a href="{{ path('app_fiche_technique_edit', {'id': fiche_technique.id}) }}"class="btn btn-primary submit-btn">edit</a>
+
+    {{ include('fiche_technique/_delete_form.html.twig') }}
+    </center>
+{% endblock %}

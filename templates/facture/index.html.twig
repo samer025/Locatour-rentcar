@@ -1,0 +1,36 @@
+{% extends 'frontt.html.twig' %}
+
+{% block title %}Facture index{% endblock %}
+
+{% block body %}
+    <h1>Mes factures</h1>
+
+    <table class="table" border="2">
+        <thead>
+            <tr>
+                {#<th>Id_f</th>#}
+                <th>Id_f</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for facture in factures %}
+            <tr>
+               {# <td>{{ facture.id_f }}</td>#}
+                <td>{{ facture.id_f }}</td>
+                <td>
+                    <a href="{{ path('app_facture_show', {'id_f': facture.id_f}) }}">View</a>
+                    <a href="{{ path('app_facture_edit', {'id_f': facture.id_f}) }}">Editer</a>
+                <a href="{{ path('PDF_N', {'id_f': facture.id_f}) }}">pdf</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_facture_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,101 @@
+
+
+
+ <div class="container">
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+
+<div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.matricule, "Matricule ")  }}
+    {{ form_widget(form.matricule,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.matricule) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.matricule) }}
+    </div>
+    {% endif %}
+    </div>
+
+
+    <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.marque, "Marque")  }}
+    {{ form_widget(form.marque,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.marque) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.marque) }}
+    </div>
+    {% endif %}
+    </div>
+
+<div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.modele, "Modele")  }}
+    {{ form_widget(form.modele,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.modele) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.modele) }}
+    </div>
+    {% endif %}
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.klm, "klm")  }}
+    {{ form_widget(form.klm,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.klm) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.klm) }}
+    </div>
+    {% endif %}
+    </div>
+
+
+
+     <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.annee, "Annee")  }}
+    {{ form_widget(form.annee,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.annee) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.annee) }}
+    </div>
+    {% endif %}
+    </div>
+
+      <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.prix, "Prix")  }}
+    {{ form_widget(form.prix,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.prix) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.prix) }}
+    </div>
+    {% endif %}
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+ <button class="btn btn-primary submit-btn"> 
+     {{ button_label|default('Save') }}
+    </button>
+
+
+
+ {{ form_end(form) }}
+</div>
+</div> 

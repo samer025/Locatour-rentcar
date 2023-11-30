@@ -1,0 +1,81 @@
+<div class="container">
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+
+
+    <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.tax, "tax")  }}
+    {{ form_widget(form.tax,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.tax) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.tax) }}
+    </div>
+    {% endif %}
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.assurence, "assurance")  }}
+    {{ form_widget(form.assurence,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.assurence) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.assurence) }}
+    </div>
+    {% endif %}
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.visite_tech, "visite technique")  }}
+    {{ form_widget(form.visite_tech,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.visite_tech) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.visite_tech) }}
+    </div>
+    {% endif %}
+    </div>
+
+     <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.vidange, "vidange")  }}
+    {{ form_widget(form.vidange,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.vidange) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.vidange) }}
+    </div>
+    {% endif %}
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+    <div class="form-group card-label">
+    {{ form_label(form.id_v, "voiture")  }}
+    {{ form_widget(form.id_v,({'class':'form-control'})) }}
+    </div>
+    {% if form_errors(form.id_v) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.id_v) }}
+    </div>
+    {% endif %}
+    </div>
+
+
+   
+
+
+
+
+
+ <button class="btn btn-primary submit-btn"> 
+     {{ button_label|default('Save') }}
+    </button>
+
+
+
+ {{ form_end(form) }}
+</div>
+

@@ -1,0 +1,65 @@
+{% extends 'back.html.twig' %}
+
+
+{% block title %}FicheTechnique index{% endblock %}
+{% block body %}
+    <h1>FicheTechnique index</h1>
+  <input type="text" class="form-control" id="searchInput" placeholder="Search&hellip;">
+
+<br>
+<script>
+        function filterTable() {
+            const filter = document.getElementById('searchInput').value.toUpperCase();
+            const rows = document.querySelectorAll('table tr');
+            for (let i = 1; i < rows.length; i++) {
+                const cols = rows[i].querySelectorAll('td');
+                let visible = false;
+                for (let j = 0; j < cols.length; j++) {
+                    const cell = cols[j];
+                    if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+                        visible = true;
+                        break;
+                    }
+                }
+                rows[i].style.display = visible ? '' : 'none';
+            }
+        }
+        document.getElementById('searchInput').addEventListener('keyup', filterTable);
+    </script>
+    <table class="table" border="2">
+        <thead>
+            <tr>
+               <th>Id</th>
+                
+                <th>Tax</th>
+                <th>Assurence</th>
+                <th>Visite_tech</th>
+                <th>Vidange</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+       {% for fiche_technique in fiche_techniques %}
+            <tr>
+                <td>{{ fiche_technique.id }}</td>
+                
+                <td>{{ fiche_technique.tax ? fiche_technique.tax|date('Y-m-d') : '' }}</td>
+                <td>{{ fiche_technique.assurence ? fiche_technique.assurence|date('Y-m-d') : '' }}</td>
+                <td>{{ fiche_technique.visiteTech ? fiche_technique.visiteTech|date('Y-m-d') : '' }}</td>
+                <td>{{ fiche_technique.vidange }}</td>
+                <td>
+                   {#} <a href="{{ path('app_fiche_technique_show', {'id': fiche_technique.id}) }}">view</a>{#}
+                    {#}<a href="{{ path('app_fiche_technique_edit', {'id': fiche_technique.id}) }}">editer</a>#}
+                       <a href="{{ path('PDF_t', {'id': fiche_technique.id}) }}">pdf</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   {#} <a href="{{ path('app_fiche_technique_new') }}">Create new</a> #}
+{% endblock %}
