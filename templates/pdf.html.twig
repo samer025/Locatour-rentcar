@@ -1,0 +1,35 @@
+
+
+{% block body %}
+    <h1 align ="center" >Contrat De Vente</h1><hr>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Cin</th>
+                <th>Date</th>
+                <th>Prix</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+        {% for contrat in contrats %}
+            <tr>
+                <td>{{ contrat.id }}</td>
+                <td>{{ contrat.nom }}</td>
+                <td>{{ contrat.cin }}</td>
+                <td>{{ contrat.date ? contrat.date|date('Y-m-d') : '' }}</td>
+                <td>{{ contrat.prix }}</td>
+                <
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
